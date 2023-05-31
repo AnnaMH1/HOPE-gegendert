@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meine Webseite</title>
+  <script src="https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/stiat/qualtrics/qstiat6.js"></script>
+</head>
+<body>
+  <script>
+    define(['pipAPI'], function(APIConstructor) {
+      var API = new APIConstructor();
+      API.addSettings('base_url', {
+        image: 'https://baranan.github.io/minno-tasks/images/'
+      });
+
+      API.addTrialSets('stiat', [
+        {
+          input: [
+            { handle: 'enter', on: 'enter' }
+          ],
+          layout: [
+            {
+              media: { word: 'Black people' },
+              css: { color: '#31b404', 'font-size': '2em' },
+              height: 7
+            },
+            {
+              media: { image: 'black1.jpg' }
+            },
+            {
+              media: { image: 'black2.jpg' }
+            },
+            // Weitere Bilder hier hinzufügen
+          ]
+        },
+        {
+          input: [
+            { handle: 'enter', on: 'enter' }
+          ],
+          layout: [
+            {
+              media: { word: 'Negative' },
+              css: { color: '#31b404', 'font-size': '2em' },
+              height: 7
+            },
+            {
+              media: { word: 'Bomb' }
+            },
+            {
+              media: { word: 'Abuse' }
+            },
+            // Weitere negative Wörter hier hinzufügen
+          ]
+        },
+        {
+          input: [
+            { handle: 'enter', on: 'enter' }
+          ],
+          layout: [
+            {
+              media: { word: 'Positive' },
+              css: { color: '#31b404', 'font-size': '2em' },
+              height: 7
+            },
+            {
+              media: { word: 'Paradise' }
+            },
+            {
+              media: { word: 'Pleasure' }
+            },
+            // Weitere positive Wörter hier hinzufügen
+          ]
+        }
+      ]);
+
+      API.addSequence([
+        { mixer: 'random', data: [{inherit: {type: 'byType', set: 'stiat'}}] }
+      ]);
+
+      API.play();
+    });
+  </script>
+</body>
+</html>
