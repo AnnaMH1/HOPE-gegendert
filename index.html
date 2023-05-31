@@ -1,83 +1,67 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Meine Webseite</title>
-  <script src="https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/stiat/qualtrics/qstiat6.js"></script>
-</head>
-<body>
-  <script>
-    define(['pipAPI'], function(APIConstructor) {
-      var API = new APIConstructor();
-      API.addSettings('base_url', {
-        image: 'https://baranan.github.io/minno-tasks/images/'
-      });
+define(['pipAPI', 'https://cdn.jsdelivr.net/gh/baranan/minno-tasks@0.*/stiat/qualtrics/qstiat6.js'], function(APIConstructor, stiatExtension){
+	
+	var API = new APIConstructor();
+		  return stiatExtension({
+		  category : { 
+		    name : 'Beide', //Will appear in the data.
+		    title : {
+		      media : {word : 'Beide'}, //Name of the category presented in the task.
+		      css : {color:'#31b404','font-size':'2em'}, //Style of the category title.
+		      height : 7 //Used to position the "Or" in the combined block.
+		    }, 
+		    media : [ //Stimuli content as PIP's media objects
+    		    	{word : 'Mitarbeiter'}, 
+    			{word : 'Bürger'}, 
+    			{word : 'Wähler'}, 
+    			{word : 'Fremder'}, 
+    			{word : 'Bekannter'}, 
+    			{word : 'Gastgeber'}
+		    ], 
+		    //Stimulus css (style)
+		    css : {color:'#31b404','font-size':'3em'}
+		  },	
 
-      API.addTrialSets('stiat', [
-        {
-          input: [
-            { handle: 'enter', on: 'enter' }
-          ],
-          layout: [
-            {
-              media: { word: 'Black people' },
-              css: { color: '#31b404', 'font-size': '2em' },
-              height: 7
-            },
-            {
-              media: { image: 'black1.jpg' }
-            },
-            {
-              media: { image: 'black2.jpg' }
-            },
-            // Weitere Bilder hier hinzufügen
-          ]
-        },
-        {
-          input: [
-            { handle: 'enter', on: 'enter' }
-          ],
-          layout: [
-            {
-              media: { word: 'Negative' },
-              css: { color: '#31b404', 'font-size': '2em' },
-              height: 7
-            },
-            {
-              media: { word: 'Bomb' }
-            },
-            {
-              media: { word: 'Abuse' }
-            },
-            // Weitere negative Wörter hier hinzufügen
-          ]
-        },
-        {
-          input: [
-            { handle: 'enter', on: 'enter' }
-          ],
-          layout: [
-            {
-              media: { word: 'Positive' },
-              css: { color: '#31b404', 'font-size': '2em' },
-              height: 7
-            },
-            {
-              media: { word: 'Paradise' }
-            },
-            {
-              media: { word: 'Pleasure' }
-            },
-            // Weitere positive Wörter hier hinzufügen
-          ]
-        }
-      ]);
+  		attribute1 : 
+			{
+			name : 'Mann', //Attribute label
+			title : {
+				media : {word : 'Mann'}, //Name of the category presented in the task.
+				css : {color:'#31b404','font-size':'2em'}, //Style of the category title.
+				height : 7 //Used to position the "Or" in the combined block.
+			}, 
+			media : [ //Stimuli
+				{word: 'Mann'},
+				{word: 'Herr'},
+				{word: 'Vater'},
+				{word: 'Bruder'},
+				{word: 'Onkel'},
+				{word: 'Ehemann'}
+			], 
+			//Can change color and size of the targets here.
+			css : {color:'#31b404','font-size':'3em'}
+			},
+		attribute2 : 
+			{
+			name : 'Frau', //Attribute label
+			title : {
+				media : {word : 'Frau'}, //Name of the category presented in the task.
+				css : {color:'#31b404','font-size':'2em'}, //Style of the category title.
+				height : 7 //Used to position the "Or" in the combined block.
+			}, 
+			media : [ //Stimuli
+				{word: 'Frau'},
+				{word: 'Dame'},
+				{word: 'Mutter'},
+				{word: 'Schwester'},
+				{word: 'Tante'},
+				{word: 'Ehefrau'}
+			], 
+			//Can change color and size of the targets here.
+			css : {color:'#31b404','font-size':'3em'}
+			},
 
-      API.addSequence([
-        { mixer: 'random', data: [{inherit: {type: 'byType', set: 'stiat'}}] }
-      ]);
-
-      API.play();
-    });
-  </script>
-</body>
-</html>
+  base_url : {//Where are your images at?
+    image : 'https://baranan.github.io/minno-tasks/images/'
+  }}
+  );
+  });
